@@ -1,0 +1,23 @@
+Create TABLE listings(
+
+listingid INT 		NOT NULL, 
+title VARCHAR(200)  	NOT NULL, 
+company VARCHAR(200) , 
+city VARCHAR (200), 
+state VARCHAR(2), 
+county VARCHAR(100),
+date DATE, 
+snippet VARCHAR(100), 
+url VARCHAR(100), 
+jobkey VARCHAR(100), 
+indeedApply VARCHAR(100), 
+PRIMARY KEY (ListingID)
+); 
+
+
+
+
+
+
+
+

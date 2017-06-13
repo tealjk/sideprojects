@@ -1,0 +1,16 @@
+HOST:radius-dev.cp21af7opq91.us-east-1.rds.amazonaws.com:5432
+
+
+
+
+psql -h radius-dev.cp21af7opq91.us-east-1.rds.amazonaws.com -p 5432 -U 
+
+
+radius_admin -W hood_Richness radius_db
+
+
+
+psql -h <host> -p <port> -u <database>
+
+
+psql -h <host> -p <port> -U <username> -W <password> <database>

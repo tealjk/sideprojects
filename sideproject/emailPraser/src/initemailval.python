@@ -1,0 +1,37 @@
+import xlsxwriter
+
+emaillist = (
+    ['EMAILS', Schumacher, Gregory J. <Gregory.Schumacher@va.gov>; Filsinger, Joyce M. <Joyce.Filsinger@va.gov>; Krebsbach, Meaghen A. <Meaghen.Krebsbach@va.gov>; Brock, Michael (OKL) <Michael.Brock2@va.gov>; Carroll, Alan S. (SHE) <Alan.Carroll@va.gov>; Federman, Allan J. <Allan.Federman@va.gov>; Parris, Ann L.(ESL) <Ann.Parris@va.gov>; Valliyakalayil, Ann A. <Ann.Valliyakalayil@va.gov>; Aranzola-Lucero, Ana S. <Ana.Aranzola-Lucero@va.gov>; Thukral, Arleen NMI <Arleen.Thukral@va.gov>; Arneson, James L. <James.Arneson@va.gov>; Pezzello, Barbara A <Barbara.Pezzello@va.gov>; Bierly, Michael T. <Michael.Bierly@va.gov>; Cucullu, Brennon P. <Brennon.Cucullu@va.gov>; Martinez-Aponte, Candido <Candido.Martinez-Aponte@va.gov>; Iven, Christina <Christina.Iven@va.gov>; Eckles, Christopher B <Christopher.Eckles@va.gov>; Beal, Colin K. <Colin.Beal@va.gov>; Engel, Connie <Connie.Engel@va.gov>; Cortese, Carly <Carly.Cortese@va.gov>; Del Pino, Daniel R. <Daniel.DelPino@va.gov>; Lewis, Darice L. <Darice.Lewis@va.gov>; Mahoney, Darylene R. <Darylene.Mahoney@va.gov>; Flannery, David <David.Flannery@va.gov>; Hamilton, David (ESL) <David.Hamilton3@va.gov>; Ostlund, David J. <David.Ostlund@va.gov>; Parks, David VHAREN <David.Parks@va.gov>; Rodriguez, David L. VHAREN <David.Rodriguez4@va.gov>; Davis, Bradley S. <Bradley.Davis3@va.gov>; Di Giorgio, Denise <Denise.DiGiorgio@va.gov>; Allen, Derrick D. <Derrick.Allen@va.gov>; Paige, Duane P. <Duane.Paige@va.gov>; Maymi, Edgar A. (ESL) <Edgar.Maymi@va.gov>; Gorman, Erik T. <Erik.Gorman@va.gov>; Orteza, Gabriella B. <Gabriella.Orteza@va.gov>; David, Georgia T. <Georgia.David@va.gov>; Peterson, Gloria R. <Gloria.Peterson@va.gov>; Siedenburg, Grant W. <Grant.Siedenburg@va.gov>; Perry, Gregory A. <Gregory.Perry2@va.gov>; Schumacher, Gregory J. <Gregory.Schumacher@va.gov>; Sorenson, Gregory T <Gregory.Sorenson@va.gov>; Stanley, Hellen R <Hellen.Stanley@va.gov>; Miller, Herman B. <Herman.Miller@va.gov>; Hillson, Larry C. VHAREN <Larry.Hillson@va.gov>; Hoak, Matthew B. <Matthew.Hoak2@va.gov>; Novotny, James S. <James.NovotnyII@va.gov>; Rice, Jeffrey S <Jeffrey.Rice@va.gov>; Beto, John A. <John.Beto@va.gov>; Gronko, John <John.Gronko@va.gov>; Stukey, John H <John.Stukey@va.gov>; Connolly, Joseph P. <Joseph.Connolly@va.gov>; Ferreira, Joseph S. (HON) <Joseph.Ferreira@va.gov>; Marshall, Joseph L. <Joseph.Marshall2@va.gov>; Filsinger, Joyce M. <Joyce.Filsinger@va.gov>; Haegele, Katherine M. <Katherine.Haegele@va.gov>; Hart, Kelly A. (BAH) <Kelly.Hart2@va.gov>; Kelsey, Pamela J. <Pamela.Kelsey@va.gov>; Harris, Kevin M. <Kevin.Harris5@va.gov>; Mitchell, Kevin G. <Kevin.Mitchell2@va.gov>; Simpson, Lawrence J. <Lawrence.Simpson@va.gov>; Brereton, Linda E. <LINDA.BRERETON@va.gov>; Leonelli, Lisa M. (SLC) <Lisa.Leonelli@va.gov>; Ye, Liye (BAH) <Liye.Ye@va.gov>; Lucas, Wilson R. <Wilson.Lucas@va.gov>; Drake, Luvenia H. (BAH) <Luvenia.Drake@va.gov>; Bess-Cobbs, Lynnette <Lynnette.Bess-Cobbs@va.gov>; Anthony, Marsha (ESL) <Marsha.Anthony@va.gov>; MCCLENNAHAN, MATTHEW N. <MATTHEW.MCCLENNAHAN@va.gov>; McGlothlin, Richard <Richard.Mcglothlin@va.gov>; Krebsbach, Meaghen A. <Meaghen.Krebsbach@va.gov>; Jew, Melody L. <Melody.Jew@va.gov>; Brock, Michael (OKL) <Michael.Brock2@va.gov>; Chu, Michael D. <Michael.Chu2@va.gov>; Matthey, Michael D <Michael.Matthey@va.gov>; Ward, Michael A. (ESL) <Michael.Ward@va.gov>; Green, Morten <Morten.Green@va.gov>; Fredrickson, Nicole <Nicole.Fredrickson@va.gov>; Martin, Nicole K (ESL) <Nicole.Martin2@va.gov>; Latour, Patrick <Patrick.Latour@va.gov>; Gauthier, Paul A. (FHM) <Paul.Gauthier@va.gov>; Garcia, Pedro E (VISN 5 - CAM) <Pedro.Garcia@va.gov>; Nguyen, Phuc <Phuc.Nguyen4@va.gov>; Cravener, Randy <Randy.Cravener@va.gov>; Dominy, Rebecca J. <Rebecca.Dominy@va.gov>; Sallee, Regina Dianne. <Regina.Sallee@va.gov>; Reichert, Catherine <Catherine.Reichert@va.gov>; Reynoso, Billy J. <Billy.Reynoso@va.gov>; Mandel, Richard J. (BAH) <Richard.Mandel@va.gov>; Capuchino, Angelica <Rita.Capuchino@va.gov>; Hutchinson, Robert D. <Robert.Hutchinson@va.gov>; Sparks, Robert M <Robert.Sparks@va.gov>; Mills, Ron (FRE FCIO) <Ron.Mills@va.gov>; Thomure, Ronald E. <Ronald.Thomure@va.gov>; White, Ronald J. <Ronald.White@va.gov>; Prosser, Sara <Sara.Prosser@va.gov>; Pervez, Shafak <Shafak.Pervez@va.gov>; Rhynsburger, Sheila A. <Sheila.Rhynsburger@va.gov>; Olandese, Sherri L <Sherri.Olandese@va.gov>; Gregg, Sherry L.  BECVAMC <SHERRY.GREGG@va.gov>; Somerville, Yvonne M. <Yvonne.Somerville@va.gov>; Sin, Stephen W. <Stephen.Sin@va.gov>; Johnson, Sue <Sue.Johnson@va.gov>; Carter, Terry R   BECVAMC <terry.carter@va.gov>; Soto, Theodore R. VHAREN <Theodore.Soto@va.gov>; Jackson, Thomas E. <Thomas.Jackson8@va.gov>; Jones, Thomas M BECVAMC <Thomas.Jones16@va.gov>; Parramore, Thomas L. <Thomas.Parramore@va.gov>; Tiensvold, Paul P. VHAREN <Paul.Tiensvold@va.gov>; Malone, Treva L. <Treva.Malone@va.gov>; Small, Troy E. (HON) <Troy.Small@va.gov>; Wei, Victor <Victor.Wei@va.gov>; Walla, Eric C. VHAREN <Eric.Walla@va.gov>; Dean, Walter A. <Walter.Dean@va.gov>; Harris, William L. <William.Harris8@va.gov>; Headley, William S. VHAREN <William.Headley@va.gov>; Smart, William <William.Smart@va.gov>; Chen, Yi VHAREN <Yi.Chen@va.gov>; Smith, Zachary <Zachary.Smith@va.gov>; Chen, Yi VHAREN <Yi.Chen@va.gov>; Klim, John J <John.Klim2@va.gov>; Phung, Deniece L. <Deniece.Phung@va.gov>; McGlothlin, Richard <Richard.Mcglothlin@va.gov>; Schumacher, Gregory J. <Gregory.Schumacher@va.gov>; Filsinger, Joyce M. <Joyce.Filsinger@va.gov>; Krebsbach, Meaghen A. <Meaghen.Krebsbach@va.gov>; Brock, Michael (OKL) <Michael.Brock2@va.gov>
+
+],
+
+)
+
+
+
+
+
+def createwb(emaillist):
+    row = 1
+    col = 0
+
+    workbook = xlsxwriter.Workbook('/Users/junkim/Desktop/sideproject/emailPraser/staging/firstworkbook.xlsx')
+    worksheet = workbook.add_worksheet('emaillist')
+    worksheet.set_column('A:A',100)
+    worksheet.write('A1','Validated-Emails')
+
+    for item, cost in (emaillist):
+        worksheet.write(row,col,    item)
+        worksheet.write(row,col + 1, cost)
+        row += 1
+
+    worksheet.write(row, 1, 'Total')
+    worksheet.write(row, 2, '=SUM(B1:B4)')
+    workbook.close()
+
+
+    print(emaillist)
+    return
+
+
+createwb(emaillist)
