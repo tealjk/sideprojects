@@ -3,11 +3,10 @@ import csv
 import xlsxwriter
 
 
-emaillisting
 
 def createfinalworkbook():
 
-    workbook = xlsxwriter.Workbook('/Users/junkim/Desktop/sideproject/emailPraser/staging/endingpoint/firstworkbook.xlsx')
+    workbook = xlsxwriter.Workbook('/Users/junkim/Desktop/sideprojects/sideproject/emailPraser/staging/endingpoint/firstworkbook.xlsx')
     worksheet = workbook.add_worksheet('emaillist')
     worksheet.set_column('A:A',100)
     worksheet.write('A1','Validated-Emails')
@@ -18,17 +17,16 @@ def createfinalworkbook():
 
 
 def csvdataparser():
-    with open('/Users/junkim/Desktop/sideproject/emailPraser/staging/beginningdoc/dumpemail.csv', 'rb') as csvfile:
+    with open('/Users/junkim/Desktop/sideprojects/sideproject/emailPraser/staging/beginningdoc/dumpemail.csv', 'rb') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         for column in spamreader:
             emaillisting = column
+            print(emaillisting)
 
-    return emaillisting
 
-
-def dataprinter(emaillisting):
-    print(emaillisting)
     return
+
+
 
 
 
@@ -36,4 +34,3 @@ def dataprinter(emaillisting):
 
 createfinalworkbook()
 csvdataparser()
-dataprinter(emaillisting)
